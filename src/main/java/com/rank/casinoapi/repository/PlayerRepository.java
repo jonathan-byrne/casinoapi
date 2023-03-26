@@ -17,5 +17,5 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
     @Query("select p from Player p " +
             "where p.username = :username")
-    public Optional<Player> findByUsername(String username);
+    public Optional<Player> findPlayerByUsername(String username);
 }

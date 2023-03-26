@@ -1,6 +1,8 @@
 package com.rank.casinoapi.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "TRANSACTIONS")
@@ -10,6 +12,8 @@ public class Transaction {
     private Integer id;
     private String transactionType;
     private Double amount;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreated;
     @ManyToOne
     @JoinColumn(name="player_id", nullable=false)
     private Player player;
@@ -18,9 +22,10 @@ public class Transaction {
 
     }
 
-    public Transaction(String transactionType, Double amount, Player player) {
+    public Transaction(String transactionType, Double amount, Date dateCreated, Player player) {
         this.transactionType = transactionType;
         this.amount = amount;
+        this.dateCreated = dateCreated;
         this.player = player;
     }
 
@@ -46,6 +51,14 @@ public class Transaction {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public Player getPlayer() {

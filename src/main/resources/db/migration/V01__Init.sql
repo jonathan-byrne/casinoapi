@@ -12,8 +12,7 @@ create table transactions (
     id int auto_increment not null,
     transaction_type varchar(256),
     amount double not null,
+    date_created timestamp not null,
     player_id int not null,
     primary key (id)
 );
-
-insert into transactions (transaction_type, amount, player_id) values ('WAGER', 25.90, 2);
