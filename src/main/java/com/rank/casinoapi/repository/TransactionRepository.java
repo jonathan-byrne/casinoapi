@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 
-    //TODO create projection here to exclude player information
     @Query(value = "select * from transactions t " +
             " where t.player_id = :playerId " +
             " order by t.date_created desc " +

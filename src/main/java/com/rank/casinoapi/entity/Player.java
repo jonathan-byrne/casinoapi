@@ -11,6 +11,13 @@ public class Player {
     private String username;
     private Double balance;
 
+    public Player() {}
+
+    public Player(String username, Double balance) {
+        this.username = username;
+        this.balance = balance;
+    }
+
     public Integer getId() {
         return id;
     }

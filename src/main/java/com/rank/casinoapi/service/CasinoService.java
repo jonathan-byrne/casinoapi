@@ -57,7 +57,7 @@ public class CasinoService {
                 List<Transaction> transactionsActual = transactions.get();
 
                 transactionsActual.forEach(t -> {
-                    GetLastTransactionsResponse lastTransaction = new GetLastTransactionsResponse(t.getId(), t.getTransactionType(), t.getAmount());
+                    GetLastTransactionsResponse lastTransaction = new GetLastTransactionsResponse(t.getId(), t.getTransactionType(), t.getAmount(), t.getDateCreated());
                     lastTransactions.add(lastTransaction);
                 });
             }
@@ -93,7 +93,7 @@ public class CasinoService {
                 playerActual.setBalance(playerActual.getBalance() + request.getAmount());
             }
 
-            Transaction transaction = new Transaction(request.getTransactionType(), playerActual.getBalance(), new Date(), playerActual);
+            Transaction transaction = new Transaction(request.getTransactionType(), request.getAmount(), new Date(), playerActual);
             transactionRepository.save(transaction);
             playerRepository.save(playerActual);
             response.setTransactionId(transaction.getId());
